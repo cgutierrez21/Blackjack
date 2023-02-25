@@ -8,6 +8,7 @@ using std::string, std::vector, std::cout, std::cin, std::endl;
 
 void print(vector<int> const &hand);
 int card_sum(vector<int> const &hand);
+void show_hands (vector<int> const &d_hand, vector<int> const &p_hand);
 
 int main (){
     cout << "Welcome to Blackjack!" << endl;
@@ -52,21 +53,13 @@ int main (){
         // Check if dealer starts with 21
         if (dealer_sum == 21){
             cout << "Dealer blackjack!" << endl;
-            cout << "Dealer hand:" << endl;
-            print(dealer_hand);
-            cout << "Player hand:" << endl;
-            print(player_hand);
-            cout << endl;
+            show_hands(dealer_hand, player_hand);
 
         }
             // Check if player stars with 21
         else if (player_sum == 21){
             cout << "Player blackjack!" << endl;
-            cout << "Dealer hand:" << endl;
-            print(dealer_hand);
-            cout << "Player hand:" << endl;
-            print(player_hand);
-            cout << endl;
+            show_hands(dealer_hand, player_hand);
 
         }
         else {
@@ -108,20 +101,12 @@ int main (){
             if (player_sum == 21){
                 cout << "Blackjack!\nYou won!!" << endl;
                 cout << "You win!" << endl;
-                cout << "Dealer hand:" << endl;
-                print(dealer_hand);
-                cout << "Player hand:" << endl;
-                print(player_hand);
-                cout << endl;
+                show_hands(dealer_hand, player_hand);
             }
                 //Check if player bust
             else if (player_sum > 21){
                 cout << "Bust!\nSorry, you lost this round." << endl;
-                cout << "Dealer hand:" << endl;
-                print(dealer_hand);
-                cout << "Player hand:" << endl;
-                print(player_hand);
-                cout << endl;
+                show_hands(dealer_hand, player_hand);
             }
                 // Player has < 21 and dealers turn
             else{
@@ -142,46 +127,26 @@ int main (){
                 // Check for dealer blackjack
                 if (dealer_sum == 21){
                     cout << "Dealer blackjack!\nSorry, you lost this round." << endl;
-                    cout << "Dealer hand:" << endl;
-                    print(dealer_hand);
-                    cout << "Player hand:" << endl;
-                    print(player_hand);
-                    cout << endl;
+                    show_hands(dealer_hand, player_hand);
                 }
                     // check if dealer bust
                 else if (dealer_sum > 21){
                     cout << "Dealer bust!\nYou won this round!" << endl;
-                    cout << "Dealer hand:" << endl;
-                    print(dealer_hand);
-                    cout << "Player hand:" << endl;
-                    print(player_hand);
-                    cout << endl;
+                    show_hands(dealer_hand, player_hand);
 
                 }
                 else{
                     if (dealer_sum > player_sum){
                         cout << "Dealer wins!" << endl;
-                        cout << "Dealer hand:" << endl;
-                        print(dealer_hand);
-                        cout << "Player hand:" << endl;
-                        print(player_hand);
-                        cout << endl;
+                        show_hands(dealer_hand, player_hand);
                     }
                     else if (dealer_sum == player_sum){
                         cout << "It's a tie!" << endl;
-                        cout << "Dealer hand:" << endl;
-                        print(dealer_hand);
-                        cout << "Player hand:" << endl;
-                        print(player_hand);
-                        cout << endl;
+                        show_hands(dealer_hand, player_hand);
                     }
                     else{
                         cout << "You win!" << endl;
-                        cout << "Dealer hand:" << endl;
-                        print(dealer_hand);
-                        cout << "Player hand:" << endl;
-                        print(player_hand);
-                        cout << endl;
+                        show_hands(dealer_hand, player_hand);
                     }
                 }
             }
@@ -211,4 +176,12 @@ int card_sum(vector<int> const &hand){
         sum += hand.at(i);
     }
     return sum;
+}
+
+void show_hands (vector<int> const &d_hand, vector<int> const &p_hand){
+    cout << "Dealer hand:" << endl;
+    print(d_hand);
+    cout << "Player hand:" << endl;
+    print(p_hand);
+    cout << endl;
 }
